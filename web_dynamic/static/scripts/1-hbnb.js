@@ -9,6 +9,6 @@ $(document).ready(function () {
         amenityList.splice(i, 1);
       }
     }
-    $('h4').text(amenityList.join(', '));
+    $('div.amenities > h4').text(amenityList.join(', '));
   });
 });
