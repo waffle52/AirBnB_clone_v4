@@ -30,7 +30,6 @@ $.ajax({
   contentType: 'application/json',
   data: '{}',
   success: (data) => {
-    console.log(data);
     for (let i = 0; i < data.length; i++) {
       const place = data[i];
       let guests = 'Guest';
@@ -53,4 +52,6 @@ $.ajax({
 
 // Reloads the places section when search button is pushed, based on selected
 // amenities.
-
+$('button.button').click(() => {
+  console.log('you clicked the search button');
+});
