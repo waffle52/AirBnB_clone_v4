@@ -19,6 +19,8 @@ $(document).ready(function () {
       contentType: 'application/json',
       data: JSON.stringify({ amenities: Object.keys(amenityList) }),
       success: (data) => {
+        //Removes all article elements in the page
+        $('article').remove();
         for (let i = 0; i < data.length; i++) {
           const place = data[i];
           let guests = 'Guest';
