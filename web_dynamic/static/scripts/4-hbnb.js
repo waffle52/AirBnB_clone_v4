@@ -17,16 +17,19 @@ $(document).ready(function () {
   // amenities.
   $('button').click(function () {
     const amenitiesRequired = $('div.amenities > h4').text().split(', ');
-    console.log(amenitiesRequired);
-    console.log(amenitiesRequired[0]);
     $.ajax({
       type: 'POST',
       url: 'http://localhost:5001/api/v1/places_search',
       contentType: 'application/json',
       data: '{}',
       success: (data) => {
-        for (let i = 0; i < data.length; i++) {
+        // Change this condition back to data.length (instead of i < 1) after hacking
+        for (let i = 0; i < 1; i++) {
           const place = data[i];
+          const placeId = place.id
+          console.log(placeId);
+          // If the place has the required amenities
+          /*
           let guests = 'Guest';
           if (place.max_guest !== 1) {
             guests = guests + 's';
@@ -41,6 +44,7 @@ $(document).ready(function () {
           }
           const htmlPlace = '<article>' + '<div class ="title_box">' + '<h2>' + place.name + '</h2>' + '<div class="price_by_night">$' + place.price_by_night + '</div>' + '</div>' + '<div class="information">' + '<div class="max_guest">' + place.max_guest + ' ' + guests + '</div>' + '<div class="number_rooms">' + place.number_rooms + ' ' + rooms + '</div>' + '<div class="number_bathrooms">' + place.number_bathrooms + ' ' + bathrooms + '</div>' + '</div>' + '<div class="description">' + place.description + '</div>' + '</article>';
           $('section.places').append(htmlPlace);
+        */
         }
       }
     });
