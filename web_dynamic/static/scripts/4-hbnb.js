@@ -3,14 +3,12 @@ $(document).ready(function () {
   const amenityList = [];
   $('INPUT:checkbox').change(function () {
     if ($(this).prop('checked') === true) {
-      amenityList.push($(this).attr('data-name'));
+      console.log($(this));
+      amenityList[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-      const i = amenityList.indexOf($(this).attr('data-name'));
-      if (i !== -1) {
-        amenityList.splice(i, 1);
-      }
+        delete amenityList[$(this).attr('data-id')];
     }
-    $('div.amenities > h4').text(amenityList.join(', '));
+    $('div.amenities > h4').text(Object.values(amenityList).join(', '));
   });
 
   // Reloads the places section when search button is pushed, based on selected
