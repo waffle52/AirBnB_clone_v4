@@ -1,3 +1,11 @@
+// Function to check if one array is a subArray
+function isSubArray (subArray, array) {
+      for(let i = 0 , len = subArray.length; i < len; i++) {
+                if($.inArray(subArray[i], array) == -1) return false;
+            }
+      return true;
+}
+
 // Adds selected amenities to the amenities object
 $(document).ready(function () {
   const amenityList = [];
@@ -39,6 +47,12 @@ $(document).ready(function () {
               console.log(placeAmenities);
               const amenitiesRequired = $('div.amenities > h4').text().split(', ');
               console.log(amenitiesRequired);
+              // Test if the place has all the required amenities
+              if (isSubArray(amenitiesRequired, placeAmenities)) {
+                console.log('This place has all the amenities');
+              } else {
+                console.log('Not enough of my preferred amenities');
+              }
             }
           });
           // If the place has the required amenities
