@@ -1,3 +1,4 @@
+// Adds selected amenities to the amenities object
 $(document).ready(function () {
   const amenityList = [];
   $('INPUT:checkbox').change(function () {
@@ -13,6 +14,7 @@ $(document).ready(function () {
   });
 });
 
+// Changes the color of the API Status object, depending on API status
 $.get('http://localhost:5001/api/v1/status/', (data) => {
   if (data.status === 'OK') {
     $('div#api_status').addClass('available');
@@ -21,6 +23,7 @@ $.get('http://localhost:5001/api/v1/status/', (data) => {
   }
 });
 
+// Adds all places in DB to the places section
 $.ajax({
   type: 'POST',
   url: 'http://localhost:5001/api/v1/places_search',
@@ -47,3 +50,7 @@ $.ajax({
     }
   }
 });
+
+// Reloads the places section when search button is pushed, based on selected
+// amenities.
+
