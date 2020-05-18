@@ -1,9 +1,8 @@
 // Adds selected amenities to the amenities object
 $(document).ready(function () {
-  const amenityList = [];
+  const amenityList = {}      
   $('INPUT:checkbox').change(function () {
     if ($(this).prop('checked') === true) {
-      console.log($(this));
       amenityList[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
         delete amenityList[$(this).attr('data-id')];
@@ -19,7 +18,7 @@ $(document).ready(function () {
       type: 'POST',
       url: 'http://localhost:5001/api/v1/places_search',
       contentType: 'application/json',
-      data: JSON.stringify({ amenities: amenityList }),
+      data: JSON.stringify({ amenities: Object.keys(amenityList) }),
       success: (data) => {
         console.log(data.length);
         // If the place has the required amenities
