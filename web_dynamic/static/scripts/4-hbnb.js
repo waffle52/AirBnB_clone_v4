@@ -12,6 +12,13 @@ $(document).ready(function () {
     }
     $('div.amenities > h4').text(amenityList.join(', '));
   });
+
+  // Reloads the places section when search button is pushed, based on selected
+  // amenities.
+  $('button').click(function () {
+    console.log('you clicked the search button');
+  });
+
 });
 
 // Changes the color of the API Status object, depending on API status
@@ -50,8 +57,3 @@ $.ajax({
   }
 });
 
-// Reloads the places section when search button is pushed, based on selected
-// amenities.
-$('button.button').click(() => {
-  console.log('you clicked the search button');
-});
