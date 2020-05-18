@@ -13,16 +13,14 @@ $(document).ready(function () {
   // Reloads the places section when search button is pushed, based on selected
   // amenities.
   $('button').click(function () {
-    console.log(amenityList);
     $.ajax({
       type: 'POST',
       url: 'http://localhost:5001/api/v1/places_search',
       contentType: 'application/json',
       data: JSON.stringify({ amenities: Object.keys(amenityList) }),
       success: (data) => {
-        console.log(data.length);
-        // If the place has the required amenities
-        /*
+        for (let i = 0; i < data.length; i++) {
+          const place = data[i];
           let guests = 'Guest';
           if (place.max_guest !== 1) {
             guests = guests + 's';
@@ -37,7 +35,7 @@ $(document).ready(function () {
           }
           const htmlPlace = '<article>' + '<div class ="title_box">' + '<h2>' + place.name + '</h2>' + '<div class="price_by_night">$' + place.price_by_night + '</div>' + '</div>' + '<div class="information">' + '<div class="max_guest">' + place.max_guest + ' ' + guests + '</div>' + '<div class="number_rooms">' + place.number_rooms + ' ' + rooms + '</div>' + '<div class="number_bathrooms">' + place.number_bathrooms + ' ' + bathrooms + '</div>' + '</div>' + '<div class="description">' + place.description + '</div>' + '</article>';
           $('section.places').append(htmlPlace);
-        */
+        }
       }
     });
   });
