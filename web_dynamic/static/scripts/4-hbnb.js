@@ -1,11 +1,3 @@
-// Function to check if one array is a subArray
-function isSubArray (subArray, array) {
-      for(let i = 0 , len = subArray.length; i < len; i++) {
-                if($.inArray(subArray[i], array) == -1) return false;
-            }
-      return true;
-}
-
 // Adds selected amenities to the amenities object
 $(document).ready(function () {
   const amenityList = [];
@@ -24,39 +16,16 @@ $(document).ready(function () {
   // Reloads the places section when search button is pushed, based on selected
   // amenities.
   $('button').click(function () {
+    console.log(amenityList);
     $.ajax({
       type: 'POST',
       url: 'http://localhost:5001/api/v1/places_search',
       contentType: 'application/json',
-      data: '{}',
+      data: JSON.stringify({ amenities: amenityList }),
       success: (data) => {
-        // Change this condition back to data.length (instead of i < 1) after hacking
-        for (let i = 0; i < 1; i++) {
-          const place = data[i];
-          const placeId = place.id
-          console.log(placeId);
-          $.ajax({
-            url: 'http://localhost:5001/api/v1/places/' + placeId + '/amenities',
-            data: '{}',
-            contentType: 'application/json',
-            success: (data) => {
-              const placeAmenities = [];
-              for (let j = 0; j < data.length; j++) {
-                placeAmenities.push(data[j].name);
-              }
-              console.log(placeAmenities);
-              const amenitiesRequired = $('div.amenities > h4').text().split(', ');
-              console.log(amenitiesRequired);
-              // Test if the place has all the required amenities
-              if (isSubArray(amenitiesRequired, placeAmenities)) {
-                console.log('This place has all the amenities');
-              } else {
-                console.log('Not enough of my preferred amenities');
-              }
-            }
-          });
-          // If the place has the required amenities
-          /*
+        console.log(data.length);
+        // If the place has the required amenities
+        /*
           let guests = 'Guest';
           if (place.max_guest !== 1) {
             guests = guests + 's';
@@ -72,11 +41,9 @@ $(document).ready(function () {
           const htmlPlace = '<article>' + '<div class ="title_box">' + '<h2>' + place.name + '</h2>' + '<div class="price_by_night">$' + place.price_by_night + '</div>' + '</div>' + '<div class="information">' + '<div class="max_guest">' + place.max_guest + ' ' + guests + '</div>' + '<div class="number_rooms">' + place.number_rooms + ' ' + rooms + '</div>' + '<div class="number_bathrooms">' + place.number_bathrooms + ' ' + bathrooms + '</div>' + '</div>' + '<div class="description">' + place.description + '</div>' + '</article>';
           $('section.places').append(htmlPlace);
         */
-        }
       }
     });
   });
-
 });
 
 // Changes the color of the API Status object, depending on API status
