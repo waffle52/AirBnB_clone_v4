@@ -16,7 +16,6 @@ $(document).ready(function () {
   // Reloads the places section when search button is pushed, based on selected
   // amenities.
   $('button').click(function () {
-    const amenitiesRequired = $('div.amenities > h4').text().split(', ');
     $.ajax({
       type: 'POST',
       url: 'http://localhost:5001/api/v1/places_search',
@@ -28,6 +27,20 @@ $(document).ready(function () {
           const place = data[i];
           const placeId = place.id
           console.log(placeId);
+          $.ajax({
+            url: 'http://localhost:5001/api/v1/places/' + placeId + '/amenities',
+            data: '{}',
+            contentType: 'application/json',
+            success: (data) => {
+              const placeAmenities = [];
+              for (let j = 0; j < data.length; j++) {
+                placeAmenities.push(data[j].name);
+              }
+              console.log(placeAmenities);
+              const amenitiesRequired = $('div.amenities > h4').text().split(', ');
+              console.log(amenitiesRequired);
+            }
+          });
           // If the place has the required amenities
           /*
           let guests = 'Guest';
