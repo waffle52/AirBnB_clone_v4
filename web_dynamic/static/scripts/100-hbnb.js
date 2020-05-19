@@ -46,7 +46,7 @@ $(document).ready(function () {
       type: 'POST',
       url: 'http://localhost:5001/api/v1/places_search',
       contentType: 'application/json',
-      data: JSON.stringify({ amenities: Object.keys(amenityList) }),
+      data: JSON.stringify({ amenities: Object.keys(amenityList), states: Object.keys(stateList), cities: Object.keys(cityList) }),
       success: (data) => {
         //Removes all article elements in the page
         $('article').remove();
