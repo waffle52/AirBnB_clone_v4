@@ -163,5 +163,10 @@ Jhoan Zamora - [Github](https://github.com/jzamora5) / [Twitter](https://twitter
 David Ovalle - [Github](https://github.com/Nukemenonai) / [Twitter](https://twitter.com/disartDave)
 
 Second part of Airbnb: Joann Vuong
+
+Web_Dynamic Additions:
+Travis Bearden - [Github](https://github.com/Beardocracy)
+Kyle Campbell - [Github](https://github.com/waffle52)
+
 ## License
 Public Domain. No copy write protection.
