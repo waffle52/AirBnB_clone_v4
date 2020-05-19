@@ -10,7 +10,7 @@ $(document).ready(function () {
     if ($(this).prop('checked') === true) {
       amenityList[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-        delete amenityList[$(this).attr('data-id')];
+      delete amenityList[$(this).attr('data-id')];
     }
     $('div.amenities > h4').text(Object.values(amenityList).join(', '));
   });
@@ -21,8 +21,8 @@ $(document).ready(function () {
       stateList[$(this).attr('data-id')] = $(this).attr('data-name');
       statesAndCities[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-        delete stateList[$(this).attr('data-id')];
-        delete statesAndCities[$(this).attr('data-id')];
+      delete stateList[$(this).attr('data-id')];
+      delete statesAndCities[$(this).attr('data-id')];
     }
     $('div.locations > h4').text(Object.values(statesAndCities).join(', '));
   });
@@ -33,8 +33,8 @@ $(document).ready(function () {
       cityList[$(this).attr('data-id')] = $(this).attr('data-name');
       statesAndCities[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-        delete cityList[$(this).attr('data-id')];
-        delete statesAndCities[$(this).attr('data-id')];
+      delete cityList[$(this).attr('data-id')];
+      delete statesAndCities[$(this).attr('data-id')];
     }
     $('div.locations > h4').text(Object.values(statesAndCities).join(', '));
   });
@@ -48,7 +48,7 @@ $(document).ready(function () {
       contentType: 'application/json',
       data: JSON.stringify({ amenities: Object.keys(amenityList), states: Object.keys(stateList), cities: Object.keys(cityList) }),
       success: (data) => {
-        //Removes all article elements in the page
+        // Removes all article elements in the page
         $('article').remove();
         for (let i = 0; i < data.length; i++) {
           const place = data[i];

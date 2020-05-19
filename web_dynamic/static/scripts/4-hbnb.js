@@ -1,11 +1,11 @@
 // Adds selected amenities to the amenities object
 $(document).ready(function () {
-  const amenityList = {}      
+  const amenityList = {};
   $('INPUT:checkbox').change(function () {
     if ($(this).prop('checked') === true) {
       amenityList[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-        delete amenityList[$(this).attr('data-id')];
+      delete amenityList[$(this).attr('data-id')];
     }
     $('div.amenities > h4').text(Object.values(amenityList).join(', '));
   });
@@ -19,7 +19,7 @@ $(document).ready(function () {
       contentType: 'application/json',
       data: JSON.stringify({ amenities: Object.keys(amenityList) }),
       success: (data) => {
-        //Removes all article elements in the page
+        // Removes all article elements in the page
         $('article').remove();
         for (let i = 0; i < data.length; i++) {
           const place = data[i];

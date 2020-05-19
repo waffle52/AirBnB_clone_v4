@@ -5,7 +5,7 @@ $(document).ready(function () {
       amenityList.push($(this).attr('data-name'));
     } else {
       const i = amenityList.indexOf($(this).attr('data-name'));
-      if (i != -1) {
+      if (i !== -1) {
         amenityList.splice(i, 1);
       }
     }
