@@ -150,8 +150,11 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) quit
 ```
 
+## web dynamic
+Static files were updated to include dynamic content with Jinja and include javscript, Jquery to work with the API and display dynamic content on the page. HTML and css files have been updated to also include buttons for a user to interact with the page to make requests via Javscript / JQuery to POST and GET information with the Flask Restful API. The API can be used with a POST request with the url "http://0.0.0.0:5001/api/v1/places_search/:" to retrieve objects and display info on the page such as clicking the search button to make a POST request to Flask to retrieve objects containing the same amenities selected in the ul list. 
+
 ## Bugs
-No known bugs at this time. 
+No known bugs at this time.
 
 ## Authors
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
@@ -161,4 +164,4 @@ David Ovalle - [Github](https://github.com/Nukemenonai) / [Twitter](https://twit
 
 Second part of Airbnb: Joann Vuong
 ## License
-Public Domain. No copy write protection. 
+Public Domain. No copy write protection.
