@@ -1,8 +1,11 @@
 // Adds selected amenities to the amenities object
 $(document).ready(function () {
   const amenityList = {};
+  const stateList = {};
+  const cityList = {};
+  const statesAndCities = {};
+  // Handles checkboxes for amenities
   $('li#amenList > INPUT:checkbox').change(function () {
-    console.log($(this));
     if ($(this).prop('checked') === true) {
       amenityList[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
@@ -10,6 +13,20 @@ $(document).ready(function () {
     }
     $('div.amenities > h4').text(Object.values(amenityList).join(', '));
   });
+
+  // Handles checkboxes for states
+  $('h2#stateBox > INPUT:checkbox').change(function () {
+    console.log($(this));
+    if ($(this).prop('checked') === true) {
+      stateList[$(this).attr('data-id')] = $(this).attr('data-name');
+      statesAndCities[$(this).attr('data-id')] = $(this).attr('data-name');
+    } else {
+        delete stateList[$(this).attr('data-id')];
+        delete statesAndCities[$(this).attr('data-id')];
+    }
+    $('div.locations > h4').text(Object.values(statesAndCities).join(', '));
+  });
+
 
   // Reloads the places section when search button is pushed, based on selected
   // amenities.
