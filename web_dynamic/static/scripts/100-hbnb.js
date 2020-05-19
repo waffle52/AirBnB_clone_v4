@@ -4,6 +4,7 @@ $(document).ready(function () {
   const stateList = {};
   const cityList = {};
   const statesAndCities = {};
+
   // Handles checkboxes for amenities
   $('li#amenList > INPUT:checkbox').change(function () {
     if ($(this).prop('checked') === true) {
@@ -16,7 +17,6 @@ $(document).ready(function () {
 
   // Handles checkboxes for states
   $('h2#stateBox > INPUT:checkbox').change(function () {
-    console.log($(this));
     if ($(this).prop('checked') === true) {
       stateList[$(this).attr('data-id')] = $(this).attr('data-name');
       statesAndCities[$(this).attr('data-id')] = $(this).attr('data-name');
@@ -27,6 +27,17 @@ $(document).ready(function () {
     $('div.locations > h4').text(Object.values(statesAndCities).join(', '));
   });
 
+  // Handles checkboxes for cities
+  $('li#cityBox > INPUT:checkbox').change(function () {
+    if ($(this).prop('checked') === true) {
+      cityList[$(this).attr('data-id')] = $(this).attr('data-name');
+      statesAndCities[$(this).attr('data-id')] = $(this).attr('data-name');
+    } else {
+        delete cityList[$(this).attr('data-id')];
+        delete statesAndCities[$(this).attr('data-id')];
+    }
+    $('div.locations > h4').text(Object.values(statesAndCities).join(', '));
+  });
 
   // Reloads the places section when search button is pushed, based on selected
   // amenities.
